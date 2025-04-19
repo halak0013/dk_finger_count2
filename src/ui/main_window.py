@@ -59,7 +59,7 @@ class MainWindow(QMainWindow):
     def parameters(self):
         self.set_val = lambda value, variable: setattr(self.config, variable, value)
         self.style_manager = StyleManager()
-        self.style_manager.set_green_theme()
+        self.style_manager.set_blue_theme()
         self.apply_theme()
 
     def apply_theme(self):
