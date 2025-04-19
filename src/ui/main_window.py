@@ -42,7 +42,7 @@ class MainWindow(QMainWindow):
         # Butonlar için düzen (sağ taraf)
         self.controls_layout = QVBoxLayout()
 
-        self.camera_ui_cofigurations()
+        self.camera_ui_configurations()
         self.setup_theme_section()
 
         # Düzen boşluğu ekleyerek butonları üstte topla
@@ -85,7 +85,7 @@ class MainWindow(QMainWindow):
 
         self.controls_layout.addWidget(self.cmb_theme)
 
-    def camera_ui_cofigurations(self):
+    def camera_ui_configurations(self):
         self.btn_start_camera = QPushButton("Kamerayı Aç")
         self.btn_start_camera.clicked.connect(self.start_camera)
         self.controls_layout.addWidget(self.btn_start_camera)

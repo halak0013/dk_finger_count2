@@ -1,3 +1,16 @@
+import os
+import sys
+
+def resource_path(relative_path):
+    """PyInstaller ile paketlenmiş uygulamada doğru dosya yolunu bulur"""
+    try:
+        # PyInstaller creates a temporary folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    
+    return os.path.join(base_path, relative_path)
+
 class StyleManager:
     def __init__(self):
         # Varsayılan yeşil tema renkleri
@@ -22,7 +35,9 @@ class StyleManager:
     def load_qss(self, file_path="app_data/style.qss"):
         """QSS dosyasını yükler ve içindeki değişkenleri mevcut tema renklerine göre değiştirir"""
         try:
-            with open(file_path, "r") as file:
+            # resource_path fonksiyonu ile gerçek dosya yolunu al
+            actual_path = resource_path(file_path)
+            with open(actual_path, "r", encoding="utf-8") as file:
                 qss_content = file.read()
 
             # ${VARIABLE} formatındaki değişkenleri değiştir

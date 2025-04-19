@@ -7,18 +7,18 @@ Bu proje, Deneyap Kart kullanarak bir kamera üzerinden algılanan parmak sayıs
 ## Gereksinimler
 
 - Deneyap Kart
-- USB Kamera
+- Bilgisayar kamerası
 - LED'ler (projede kullanılan sayıda)
 - Jumper kablolar
 - Breadboard
-- USB güç kaynağı veya powerbank
+- USB güç kaynağı veya taşınabilir bir güç kaynağı
 
 ## Kurulum
 
 1. Deneyap Kart'ı bilgisayarınıza bağlayın.
 2. USB kamerayı Deneyap Kart'a bağlayın.
 3. LED'leri aşağıdaki pin yapılandırmasına göre bağlayın:
-(Kullandığınız kart modeline göre pin numaraları değişebilir, lütfen kartınıza uygun pinleri kontrol edin. Kod içiresinde hazır olanları kontorl edebiiniz.)
+(Kullandığınız kart modeline göre pin numaraları değişebilir, lütfen kartınıza uygun pinleri kontrol edin. Kod içiresinde hazır olanları kontrol edebilirsiniz.)
    - LED 1: Pin D9
    - LED 2: Pin D12
    - LED 3: Pin D13
@@ -29,15 +29,15 @@ Bu proje, Deneyap Kart kullanarak bir kamera üzerinden algılanan parmak sayıs
 
 ### Deneyap Kart Hazırlık
 1. Arduino IDE'yi açın.
-2. finger_count_server kodalrından birini seçin
-    - finger_count_server_2: aynı ağda olmak için ağ ismini ve şifersini girmeniz gerekiyor.
+2. finger_count_server kodlarından birini seçin
+    - **finger_count_server_2**: aynı ağda olmak için ağ ismini ve şifresini girmeniz gerekiyor.
         - `const char* ssid ` `const char* password`
-    - finger_count_server_ap: bunun için herhangi bir ağ ayarı yapmanıza gerek yoktur. Deneyap Kart kendi ağını oluşturur ve bu ağa bilgisayarınızla bağlanarak parmak sayısını algılayabilirsiniz.
+    - **finger_count_server_ap**: bunun için herhangi bir ağ ayarı yapmanıza gerek yoktur. Deneyap Kart kendi ağını oluşturur ve bu ağa bilgisayarınızla bağlanarak parmak sayısını algılayabilirsiniz.
 3. Proje dosyasını Arduino IDE'ye yükleyin ve Deneyap Kart'a gönderin.
 
 ### Python Kütüphaneleri
 1. Bilgisayarınıza Python 3.x (x >= 9) yükleyin.
-2. Vstudio Code ile sanal ortam oluşturun ve aktif edin.
+2. Vs Code ile sanal ortam oluşturun ve aktif edin.
     - Sonrasında **main.py** dosyasını açıp `shift+ctl+p` tuşlarına basıp `env` yazdığınız zaman Python ortamı oluşturun veya Python: create environment basmanız gerekmektedir. Sonarsında sanal ortamı oluşturmanız gerekmektedir. 
     - Oluşturma sırasında size bağımlıkları yüklemenizi isteyen bir seçenek çıkabilir. Seçip otomatik olarak kurulumu yapabilirsiniz
 <img src="doc/requirements.png" height=70>
