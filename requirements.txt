@@ -1,0 +1,7 @@
+#cv2
+opencv-python
+mediapipe
+numpy
+cvzone
+PyQt6
+pyyaml
