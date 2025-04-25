@@ -74,19 +74,35 @@ void receiveDataTask(void* parameter) {
 
 
 void parseUDPData(const char* udpData, int fingers[5]) {
-  // Veriyi virgülle ayır
-  char dataCopy[50];                                 // Verinin kopyasını alıyoruz
-  strncpy(dataCopy, udpData, sizeof(dataCopy) - 1);  // Gelen veriyi kopyala
-  dataCopy[sizeof(dataCopy) - 1] = '\0';             // Sonuna null karakter ekle
+  // Köşeli parantezleri ve boşlukları temizle
+  char dataCopy[50];                                 
+  strncpy(dataCopy, udpData, sizeof(dataCopy) - 1);  
+  dataCopy[sizeof(dataCopy) - 1] = '\0';             
+
+  // Köşeli parantezleri kaldır
+  char* cleanData = dataCopy;
+  if (cleanData[0] == '[') {
+    cleanData++; // İlk karakteri atla
+  }
+  
+  // Son parantezi kaldır
+  int len = strlen(cleanData);
+  if (len > 0 && cleanData[len-1] == ']') {
+    cleanData[len-1] = '\0';
+  }
 
   // Veriyi virgüllerle ayır
-  char* token = strtok(dataCopy, ",");
+  char* token = strtok(cleanData, ",");
   int index = 0;
 
-  // Veriyi int'e çevirip angles dizisine at
+  // Veriyi int'e çevirip fingers dizisine at
   while (token != nullptr && index < 5) {
-    fingers[index] = (int)round(atof(token));  // Float'ı yuvarlayarak int'e çevir
-    token = strtok(nullptr, ",");              // Bir sonraki kısmı al
+    // Boşlukları atla
+    while (*token == ' ') {
+      token++;
+    }
+    fingers[index] = atoi(token);  // String'i int'e dönüştür
+    token = strtok(nullptr, ",");  // Bir sonraki kısmı al
     index++;
   }
 }
